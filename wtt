@@ -1,0 +1,24 @@
+//时光提醒
+package com.example.Atrosenet;
+
+import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.XC_MethodReplacement;
+import de.robv.android.xposed.XposedHelpers;
+import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
+
+public class qwwww implements IXposedHookLoadPackage {
+
+	@Override
+	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {
+		if ("com.imzhiqiang.time".equals(lpparam.packageName)) {
+			XposedHelpers.findAndHookMethod(
+				"jj2", //类名
+				lpparam.classLoader,
+				"s", //方法名
+				XC_MethodReplacement.returnConstant(true));
+				
+	  	}
+
+	}
+
+}
